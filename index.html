@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rotating GIF Box</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #rotatingGif {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <img id="rotatingGif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" />
+
+  <script>
+    const gifs = [
+      "https://media0.giphy.com/media/vLFQBcHdpVD83g2ThH/giphy.gif",
+      "https://media2.giphy.com/media/Usceef0UgzK3C/giphy.gif",
+      "https://media4.giphy.com/media/a42Lx0aPS7Z3a/giphy.gif",
+      "https://media0.giphy.com/media/y0NFayaBeiWEU/giphy.gif",
+      "https://media4.giphy.com/media/CbMg55XvHjpO8/giphy.gif",
+      "https://media3.giphy.com/media/3oD3YQjT2cSZTsy6Va/giphy.gif",
+      "https://media1.giphy.com/media/uooHb19hRELeM/giphy.gif",
+      "https://media2.giphy.com/media/rdAeOA3mfXomQ/giphy.gif",
+      "https://media0.giphy.com/media/Dg4TxjYikCpiGd7tYs/giphy.gif",
+      "https://media3.giphy.com/media/nHaF5cJanabVk86MLJ/giphy.gif",
+      "https://media1.giphy.com/media/4wapoK38KR4Ry/giphy.gif",
+      "https://media4.giphy.com/media/107QsHzZW54hJC/giphy.gif"
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % gifs.length;
+      document.getElementById("rotatingGif").src = gifs[index];
+    }, 90000); // 90 seconds
+  </script>
+</body>
+</html>
