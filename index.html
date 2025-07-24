@@ -19,7 +19,8 @@
   </style>
 </head>
 <body>
-  <img id="rotatingGif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" />
+  <!-- Blank transparent placeholder (1x1 pixel) -->
+  <img id="rotatingGif" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
 
   <script>
     const gifs = [
@@ -41,7 +42,7 @@
     setInterval(() => {
       index = (index + 1) % gifs.length;
       document.getElementById("rotatingGif").src = gifs[index];
-    }, 90000); // 90 seconds
+    }, 90000); // Change every 90 seconds
   </script>
 </body>
 </html>
