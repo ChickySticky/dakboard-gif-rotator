@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Rotating GIF Box</title>
@@ -19,7 +19,7 @@
   </style>
 </head>
 <body>
-  <!-- Blank transparent placeholder (1x1 pixel) -->
+  <!-- Transparent placeholder to avoid cursed cats -->
   <img id="rotatingGif" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
 
   <script>
@@ -33,16 +33,20 @@
       "https://media1.giphy.com/media/uooHb19hRELeM/giphy.gif",
       "https://media2.giphy.com/media/rdAeOA3mfXomQ/giphy.gif",
       "https://media0.giphy.com/media/Dg4TxjYikCpiGd7tYs/giphy.gif",
-      "https://media3.giphy.com/media/nHaF5cJanabVk86MLJ/giphy.gif",
-      "https://media1.giphy.com/media/4wapoK38KR4Ry/giphy.gif",
-      "https://media4.giphy.com/media/107QsHzZW54hJC/giphy.gif"
+      "https://media3.giphy.com/media/nHaF5cJanabVk86MLJ/giphy.gif"
     ];
 
     let index = 0;
-    setInterval(() => {
+
+    function rotateGif() {
+      const gifElement = document.getElementById("rotatingGif");
+      gifElement.src = gifs[index];
       index = (index + 1) % gifs.length;
-      document.getElementById("rotatingGif").src = gifs[index];
-    }, 90000); // Change every 90 seconds
+    }
+
+    // Start immediately and rotate every 10 seconds
+    rotateGif();
+    setInterval(rotateGif, 10000);
   </script>
 </body>
 </html>
