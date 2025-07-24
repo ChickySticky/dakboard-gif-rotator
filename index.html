@@ -12,6 +12,7 @@
       justify-content: center;
       height: 100vh;
     }
+
     #rotatingGif {
       max-width: 100%;
       height: auto;
@@ -22,7 +23,7 @@
   <img id="rotatingGif" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
 
   <script>
-    const gifs = [
+    const originalGifs = [
       "https://media0.giphy.com/media/vLFQBcHdpVD83g2ThH/giphy.gif",
       "https://media2.giphy.com/media/Usceef0UgzK3C/giphy.gif",
       "https://media4.giphy.com/media/a42Lx0aPS7Z3a/giphy.gif",
@@ -54,17 +55,34 @@
       "https://media.giphy.com/media/m7sn0naRjpfkA/giphy.gif"
     ];
 
+    let gifs = [];
     let index = 0;
 
-    function rotateGif() {
-      const gifElement = document.getElementById("rotatingGif");
-      gifElement.src = gifs[index];
-      index = (index + 1) % gifs.length;
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
 
-    // Start immediately and rotate every 30 seconds
-    rotateGif();
-    setInterval(rotateGif, 30000);
+    function nextGif() {
+      const gifElement = document.getElementById("rotatingGif");
+
+      // Shuffle a new list if we’ve reached the end
+      if (index >= gifs.length) {
+        gifs = shuffle([...originalGifs]);
+        index = 0;
+      }
+
+      gifElement.src = gifs[index];
+      index++;
+    }
+
+    // Initialize list and start
+    gifs = shuffle([...originalGifs]);
+    nextGif();
+    setInterval(nextGif, 30000); // 30 seconds
   </script>
 </body>
 </html>
